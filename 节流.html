@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+
+</style>
+<script>
+    window.onload = function() {
+        var btn = document.getElementById('btn');
+        btn.addEventListener('click', throttle(sayThrottle));
+    }
+
+    function throttle(fn) {
+        let canRun = true;
+
+        return function() {
+            if (!canRun) {
+                return;
+            }
+
+            // 6、将 canRun 设置为 false，防止执行之前再被执行
+            canRun = false;
+            // 7、定时器
+            setTimeout(() => {
+                fn.call(this, arguments);
+                // 8、执行完事件（比如调用完接口）之后，重新将这个标志设置为 true
+                canRun = true;
+            }, 2000);
+        }
+    }
+
+    function sayThrottle() {
+        console.log('节流成功！')
+    }
+</script>
+
+<body>
+    <button id="btn">节流</button>
+</body>
+
+</html>

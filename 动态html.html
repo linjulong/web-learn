@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    @media print {
+        .btn {
+            display: none;
+        }
+    }
+</style>
+
+<body onbeforeprint="myFunction()" onafterprint="onafterprint1()">
+    <script>
+        let htmlStr =
+            "<h1>啊肥你妈妈没了</h1><h1>啊肥你妈妈没了</h1><h1>啊肥你妈妈没了</h1><h1>啊肥你妈妈没了</h1><h1>啊肥你妈妈没了</h1><h1>啊肥你妈妈没了</h1><h1>啊肥你妈妈没了</h1><h1>啊肥你妈妈没了</h1><h1>啊肥你妈妈没了</h1><h1>啊肥你妈妈没了</h1><h1>啊肥你妈妈没了</h1><h1>啊肥你妈妈没了</h1><h1>啊肥你妈妈没了</h1><h1>啊肥你妈妈没了</h1><h1>啊肥你妈妈没了</h1><h1>啊肥你妈妈没了</h1><h1>啊肥你妈妈没了</h1><h1>啊肥你妈妈没了</h1><h1>啊肥你妈妈没了</h1><h1>啊肥你妈妈没了</h1><h1>啊肥你妈妈没了</h1><h1>啊肥你妈妈没了</h1><h1>啊肥你妈妈没了</h1><h1>啊肥你妈妈没了</h1><h1>啊肥你妈妈没了</h1><h1>啊肥你妈妈没了</h1><h1>啊肥你妈妈没了</h1><h1>啊肥你妈妈没了</h1>";
+        let js = "alert('啊肥我叼你妈')"
+        window.onload = () => {
+            setTimeout(() => {
+                document.open();
+                document.write(htmlStr); //写入html文件
+                document.close();
+                window.print();
+            }, 3000)
+
+        }
+
+        function myFunction() {
+            alert("打印前事件");
+            var allButton = document.all.tags("INPUT");
+            for (var i = 0; allButton != null && i < allButton.length; i++) {
+                allButton[i].style.visibility = hidden;
+            }
+            //parent.iprint.style.display = "none";
+        }
+
+        function onafterprint1() {
+            var allButton = document.all.tags("INPUT");
+            for (var i = 0; allButton != null && i < allButton.length; i++) {
+                allButton[i].style.visibility = visible;
+            }
+        }
+    </script>
+</body>
+
+</html>

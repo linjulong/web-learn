@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #div {
+        width: 200px;
+        height: 100px;
+        background-color: red;
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+</style>
+
+<body>
+    <div id="div"></div>
+</body>
+
+<script>
+    var dis = 0;
+    var div = document.getElementById('div');
+    function animation() {
+        requestAnimationFrame(function (e) {
+            console.log(e)
+            dis++;
+            div.style.left = `${dis}px`;
+            div.style.top = `${dis}px`;
+            animation();
+        })
+    }
+    animation();
+</script>
+
+</html>

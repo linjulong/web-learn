@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    section div {
+        height: 200px;
+    }
+
+    .left {
+        background-color: red;
+        width: 200px;
+    }
+
+    .right {
+        background-color: blue;
+        width: 200px;
+    }
+
+    .center {
+        background-color: yellow;
+        /* margin-left: 200px;
+        margin-right: 200px; */
+    }
+</style>
+
+<body>
+    <section>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .float-left {
+                float: left;
+            }
+
+            .float-right {
+                float: right;
+            }
+        </style>
+        <div class="left float-left"></div>
+        <div class="right float-right"></div>
+        <div class="center float-center">浮动</div>
+    </section>
+
+    <section>
+        <style>
+            .abs-left {
+                position: absolute;
+                left: 0;
+            }
+
+            .abs-right {
+                position: absolute;
+                right: 0;
+            }
+
+            .abs-center {
+                position: absolute;
+                left: 200px;
+                right: 200px;
+            }
+        </style>
+        <div class="left abs-left"></div>
+        <div class="right abs-right"></div>
+        <div class="center abs-center">绝对定位</div>
+    </section>
+
+    <section style="display: flex;margin-top: 300px;">
+        <style>
+            .flex-center {
+                flex: 1;
+            }
+        </style>
+        <div class="left flex-left"></div>
+        <div class="center flex-center">flex</div>
+        <div class="right flex-right"></div>
+
+    </section>
+
+    <section style="display: table;width: 100%;">
+        <style>
+            .table-left,
+            .table-center,
+            .table-right {
+                display: table-cell;
+            }
+        </style>
+        <div class="left table-left"></div>
+        <div class="center table-center">table</div>
+        <div class="right table-right"></div>
+
+    </section>
+
+    <section class="gird">
+        <style>
+            .gird {
+                width: 100%;
+                display: grid;
+                grid-template-rows: 200px;
+                grid-template-columns: 200px auto 200px;
+            }
+        </style>
+        <div class="left gird-left"></div>
+        <div class="center gird-center">gird</div>
+        <div class="right gird-right"></div>
+
+    </section>
+</body>
+
+</html>

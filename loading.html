@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .loading:after {
+        display: inline-block;
+        overflow: hidden;
+        vertical-align: bottom;
+        content: "\2026";
+        -webkit-animation: ellipsis 2s infinite;
+    }
+
+    @-webkit-keyframes ellipsis {
+        from {
+            width: 2px;
+        }
+
+        to {
+            width: 15px;
+        }
+    }
+</style>
+
+<body>
+    <div class="loading"></div>
+</body>
+
+</html>

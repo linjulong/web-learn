@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    /**
+     * 蛇形矩阵
+     * 思路整理：首先定义一个二维数组用来保存矩阵内容，蛇形矩阵的特点是数字顺时针回旋依次增加1，
+     * 可以通过二维数组坐标控制输出内容。
+     * 传入值必须为正整数！！！
+     * 循环定义：以3X3数组为例，一次循环为[0][0]==>[0][2]==>[2][2]=>[2][0]=>[1][0]
+     *          第二次循环：[1][1]
+     *   从最外层向内层循环循环，到中心位置时停止循环
+     * 循环次数：奇数1/2*n+1   偶数1/2*n
+     */
+    function snake(num) {
+        var result = new Array();
+        var flag = 0, //当前循环次数,从0起
+            item = 1, // 输出项
+            i = 0, // 横坐标
+            j = 0, // 纵坐标
+            times; // 循环次数
+        for (let a = 0; a < num; a++) {
+            result[a] = new Array();
+            for (let b = 0; b < num; b++) {
+                result[a][b] = 0;
+            }
+        }
+        // 顺时针输出函数
+        function loop() {
+            // 循环左上角起始位置
+            if (i === j) {
+                result[i][j] = item; // 输入内容为奇数时，直接输出
+                for (j; j < num - flag - 1; j++) {
+                    result[i][j] = item;
+                    item++;
+                }
+            }
+            // 循环右上角
+            if (i < j) {
+                for (i; i < num - flag - 1; i++) {
+                    result[i][j] = item;
+                    item++;
+                }
+            }
+            // 判断是否为当次循环的左上角起始位置，此处为循环右下角
+            if (i === j && i > flag && j > flag) {
+                for (j; j > flag; j--) {
+                    result[i][j] = item;
+                    item++;
+                }
+            }
+            // 循环左下角，方法执行完成标志一次顺时针走完，横纵坐标加1，等待进入下次循环
+            if (i > j) {
+                for (i; i > flag; i--) {
+                    result[i][j] = item;
+                    item++;
+                }
+                i += 1;
+                j += 1;
+            }
+        }
+        // 循环次数为输入的值（偶数）的1/2*n，奇数为1/2*n+1
+        if (num % 2 === 0) {
+            times = num / 2;
+        } else {
+            times = num / 2 + 1;
+        }
+        for (flag; flag < times; flag++) {
+            loop();
+        }
+        //矩阵输出
+        // result.forEach((items, index) => console.log(`${items.join(' ')}`));
+        // 横向输出
+        console.log(result.map(item => item.join(' ')).join(' '));
+
+
+    }
+    //执行方法，输出蛇形矩阵,传入值必须为正整数！！！
+    snake(30);
+</script>
+
+<body>
+
+</body>
+
+</html>

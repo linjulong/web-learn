@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var promise = new Promise((resolve, reject) => {
+            if (0) {
+                resolve(1)
+            } else {
+                reject(2)
+            }
+        })
+        promise.then(function(value) {
+                // success
+                console.log(success)
+            }).catch(reason => {
+                console.log(reason)
+            })
+            //reject后的东西，一定会进入then中的第二个回调，如果then中没有写第二个回调，则进入catch
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

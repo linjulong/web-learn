@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function find(length, arr, inputNum) {
+            let all = [];
+            for (var i = 0; i < arr.length; i++) {
+                for (var j = 1; j < arr.length; j++) {
+                    if (i < j) {
+                        let obj = {};
+                        obj.flag = [arr[i], arr[j]];
+                        obj.sum = arr[i] + arr[j];
+                        all.push(obj);
+                    }
+                }
+            }
+
+            for (var i = 0; i < all.length; i++) {
+                if (all[i].sum == inputNum) {
+                    return all[i].flag.join(',');
+                }
+            }
+
+            return 'notfound';
+        }
+
+        console.log(find(5, [1, 3, 4, 6, 8], 13));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

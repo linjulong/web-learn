@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+
+<HEAD>
+    <TITLE> New Document </TITLE>
+    <META NAME="Generator" CONTENT="EditPlus">
+    <META NAME="Author" CONTENT="">
+    <META NAME="Keywords" CONTENT="">
+    <META NAME="Description" CONTENT="">
+</HEAD>
+
+<BODY>
+    <script language="javascript">
+
+        document.οncοntextmenu = ContextMenu; //为当前文档添加鼠标右击事件，防止默认的右击菜单弹出
+        function ContextMenu() {
+            alert("右擊成功！");
+            console.log(111)
+            return false;
+        }
+
+        //为某个dom元素添加鼠标右击事件
+        window.onload = function () {
+
+            document.getElementById("test").οncοntextmenu = ContextMenu;
+        }
+
+    </script>
+
+    <div id="test" style="width:200px;height:200px;background-color:red">
+
+    </div>
+
+</BODY>
+
+</HTML>
