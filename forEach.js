@@ -12,3 +12,5 @@ function itemInArray(arr, target) {
     }
     return false;
 }
+
+console.log('a=0'.split('='))
