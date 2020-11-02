@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bg {
+            width: 100px;
+            height: 100px;
+            background-image: url('https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1887780216,3333592862&fm=26&gp=0.jpg');
+        }
+    </style>
+</head>
+
+<body>
+    <div>1. 是否占位
+
+        background-image是背景图片，是css的一个样式，不占位；
+        <img />是一个块状元素，它是一个图片，是html的一个标签，占位；
+
+        2. 是否可操作
+        （1）background-image是只能看的，只能设置如下属性：
+        background-position: 为每一个背景图片设置初始位置。 这个位置是相对于由 background-origin定义的位置图层；
+        background-attachment: 决定背景是在视口中固定的还是随包含它的区块滚动的；
+        background-repeat: CSS 属性定义背景图像的重复方式。背景图像可以沿着水平轴，垂直轴，两个轴重复，或者根本不重复。
+
+        （2）<img />是一个document对象，它是可以操作的。比如更换img src的路径可以达到更换图片的目的，也可以移动它的位置，从document中移除等等操作。
+        所以如果是装饰性的图片就使用background-img，如果和文体内容很相关就使用img。
+
+        3.加载顺序不同
+        在网页加载的过程中，以css背景图存在的图片background-image会等到结构加载完成（网页的内容全部显示以后）才开始加载，而html中的标签img是网页结构（内容）的一部分会在加载结构的过程中加载，换句话讲，网页会先加载标签img的内容，再加载背景图片background-image，如果你用引入了一个很大的图片，那么在这个图片下载完成之前，img后的内容都不会显示。而如果用css来引入同样的图片，网页结构和内容加载完成之后，才开始加载背景图片，不会影响你浏览网页内容。
+    </div>
+    <img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1800222003,2514272374&fm=26&gp=0.jpg" alt="">
+    <div class="bg"></div>
+</body>
+
+</html>
