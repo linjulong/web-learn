@@ -5,4 +5,6 @@ const add = (a, ...num) => {
     return a + num;
 }
 
-console.log(1 + [])
+add(1,2)
+
+//console.log(1 + [222,333])

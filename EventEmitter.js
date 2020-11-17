@@ -2,7 +2,7 @@
  * @Author: linjulong
  * @Date: 2020-10-29 16:39:15
  * @LastEditors: linjulong
- * @LastEditTime: 2020-10-29 16:56:38
+ * @LastEditTime: 2020-11-04 17:49:42
  * @Description: https://zhuanlan.zhihu.com/p/77876876?utm_source=wechat_session
  */
 
@@ -69,12 +69,14 @@ EventEmitter.prototype.setMaxListeners = function (num) {
 
 let event = new EventEmitter();
 
-event.on('some_event', function () {
+event.on('some_event', function (a) {
     console.log('1');
+    console.log(a)
 });
-event.on('some_event', function () {
+event.on('some_event', function (b) {
     console.log('2');
+    console.log(b)
 });
 setTimeout(function () {
-    event.emit('some_event');
+    event.emit('some_event',a=111);
 }, 1000);
