@@ -1,0 +1,119 @@
+<html>
+
+<header>
+
+        <title>
+
+                drag
+
+            </title>
+
+        <style>
+        #drag {
+
+            width: 500px;
+
+            height: 100px;
+
+            background: cornflowerblue;
+
+            border-radius: 50px;
+
+            box-shadow: lightsteelblue 5px 5px 5px;
+
+            position: relative;
+
+            left: 100px;
+
+            top: 100px;
+
+        }
+    </style>
+
+</header>
+
+<body>
+
+    <div id="drag">
+
+    </div>
+
+    <script>
+
+        var dragEl = document.querySelector('#drag');
+
+        var HEIGHT, WIDTH, TIMEOUT;
+
+        dragEl.addEventListener('touchstart', function (e) {
+
+            var touches = e.touches[0];
+
+            HEIGHT = touches.clientY - this.offsetTop;
+
+            WIDTH = touches.clientX - this.offsetLeft;
+
+            document.body.addEventListener('touchmove', function (e) {
+
+                e.preventDefault()
+
+            }, false)
+
+        }, false);
+
+        dragEl.addEventListener("touchmove", function (e) {
+
+            var touches = e.touches[0];
+
+            var LEFT = touches.clientX - WIDTH;
+
+            var TOP = touches.clientY - HEIGHT;
+
+            var DRAGEL_WIDTH = this.offsetWidth;
+
+            var BODY_WIDTH = document.documentElement.clientWidth;
+
+            var DRAGEL_HEIGHT = this.offsetHeight;
+
+            var BODY_HEIGHT = document.documentElement.clientHeight;
+
+            if (LEFT < 0) {
+
+                LEFT = 0;
+
+            } else if (LEFT > BODY_WIDTH - DRAGEL_WIDTH) {
+
+                LEFT = BODY_WIDTH - DRAGEL_WIDTH;
+
+            }
+
+            if (TOP < 0) {
+
+                TOP = 0
+
+            } else if (TOP > BODY_HEIGHT - DRAGEL_HEIGHT) {
+
+                TOP = BODY_HEIGHT - DRAGEL_HEIGHT;
+
+            }
+
+            this.style.left = LEFT + 'px';
+
+            this.style.top = TOP + 'px';
+
+        }, false);
+
+        dragEl.addEventListener('touchend', function (e) {
+
+            document.body.removeEventListener('touchmove', function (e) {
+
+                e.preventDefault()
+
+            }, false)
+
+        }, false);
+
+    </script>
+
+</body>
+
+</html>

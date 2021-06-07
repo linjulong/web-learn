@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .g-box {
+            width: 100%;
+            height: 10000px;
+            position: relative;
+        }
+
+        .progress {
+            width: 0%;
+            height: 2px;
+            background-color: deeppink;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+
+            background-color: rgba(0, 0, 0, .4);
+
+            -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1);
+
+        }
+
+        .hhh {
+            width: 10px;
+            height: 10px;
+            background-color: deeppink;
+            position: fixed;
+            top: 0;
+            right: 0;
+        }
+
+        #scroll-tip-wrap {
+            position: fixed;
+            height: 0px;
+            right: 20px;
+            width: 100%;
+            z-index: 10000;
+        }
+
+        #scroll-tip {
+            display: none;
+            z-index: 30000;
+            border-radius: 0;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            -webkit-transition: opacity 0.13s ease-in;
+            -o-transition: opacity 0.13s ease-in;
+            transition: opacity 0.13s ease-in;
+            background-color: #2a2a2a;
+            border: 1px solid #fff;
+            cursor: default;
+            margin-left: -1px;
+            opacity: 1;
+            padding: 7px 9px;
+            height: 32px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            position: absolute;
+            visibility: visible;
+            white-space: pre-wrap;
+            word-break: break-all;
+            word-break: break-word;
+            pointer-events: none;
+            right: 0px;
+            top: 0;
+            /* min-width: 70px; */
+        }
+
+        #scroll-tip-content {
+            display: block;
+            height: 17px;
+            font-size: 11px;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        #scroll-tip::after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 0;
+            height: 0;
+            top: 9px;
+            right: -12px;
+            border: 6px solid transparent;
+            border-left: 6px solid #2a2a2a;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="g-box">
+        <div id="scroll-tip-wrap">
+            <div id="scroll-tip" role="tooltip" style="opacity: 1; display: block;"><span
+                    id="scroll-tip-content">15%</span></div>
+        </div>
+    </div>
+    <div class="progress"></div>
+
+</body>
+<script>
+    (function () {
+        // 页面的总搞得
+        let pageHeight = document.body.scrollHeight || document.documentElement.scrollHeight;
+        // 浏览器视口高度
+        let windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+
+        let scrollHeight = windowHeight / pageHeight * windowHeight
+
+        // 可滚动的高度
+        let scrollAvail = pageHeight - windowHeight;
+
+        document.querySelector('#scroll-tip').style.top = scrollHeight / 2 + 'px'
+        window.onscroll = function (event) {
+            // 获取滚动条的高度
+            let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            // 计算占比
+            document.querySelector('.progress').style.width = (scrollTop / scrollAvail) * 100 + '%'
+            document.querySelector('#scroll-tip-content').innerHTML = parseInt((scrollTop / scrollAvail) * 100) + '%'
+            console.log((scrollTop / scrollAvail * windowHeight))
+            document.querySelector('#scroll-tip').style.top = (scrollTop / scrollAvail * (windowHeight - scrollHeight)) + scrollHeight / 2 - (scrollHeight * (scrollTop / scrollAvail) / 2) + 'px'
+
+            console.log()
+            let bottom = document.documentElement.scrollHeight - document.documentElement.scrollTop - document.documentElement.clientHeight;
+        }
+    })()
+    /*
+     document.body  返回文档的body元素
+     document.documentElement  返回文档的根节点
+     window.onscroll  浏览器窗口滚动时触发
+     querySelector  获取类名为progress的元素
+     element.scrollHeight  返回元素的整体高度
+     element.scrollWidth  返回元素的整体宽度
+     element.scrollLeft  返回元素左边缘与视图之间的距离
+     element.scrollTop  返回元素上边缘与视图之间的距离
+     */
+</script>
+
+</html>

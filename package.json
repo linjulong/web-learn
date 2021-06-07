@@ -1,0 +1,25 @@
+{
+  "name": "learn",
+  "version": "1.0.0",
+  "description": "日常前端学习",
+  "main": "EventEmitter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linjulong/web-learn.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/linjulong/web-learn/issues"
+  },
+  "homepage": "https://github.com/linjulong/web-learn#readme",
+  "dependencies": {
+    "file-type": "^16.3.0",
+    "mime-types": "^2.1.30",
+    "mssql": "^7.0.0",
+    "read-chunk": "^3.2.0"
+  }
+}

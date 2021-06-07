@@ -70,13 +70,14 @@ EventEmitter.prototype.setMaxListeners = function (num) {
 let event = new EventEmitter();
 
 event.on('some_event', function (a) {
-    console.log('1');
     console.log(a)
 });
 event.on('some_event', function (b) {
-    console.log('2');
     console.log(b)
 });
 setTimeout(function () {
     event.emit('some_event',a=111);
+}, 1000);
+setTimeout(function () {
+    event.emit('some_event',a=222);
 }, 1000);

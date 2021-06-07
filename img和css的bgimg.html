@@ -12,6 +12,20 @@
             background-image: url('https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1887780216,3333592862&fm=26&gp=0.jpg');
         }
     </style>
+    <script>
+        var a = 0
+        if (true) {
+            function a() { }
+            console.log(a)
+            a = 10
+            console.log(a, window.a)
+            console.log(a, window.a)
+            a = 20
+            console.log(a, window.a)
+        }
+        console.log(a)
+
+    </script>
 </head>
 
 <body>
